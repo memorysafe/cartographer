@@ -244,6 +244,11 @@ void Submap::Finish() {
   finished_ = true;
 }
 
+void Submap::ToPGM(std::ofstream& file_out) const{
+  LOG(ERROR) << "Submap::ToPGM in 3D has not been implemented";
+  throw 6;
+}
+
 ActiveSubmaps::ActiveSubmaps(const proto::SubmapsOptions& options)
     : options_(options),
       range_data_inserter_(options.range_data_inserter_options()) {

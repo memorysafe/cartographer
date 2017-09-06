@@ -68,6 +68,8 @@ class Submap : public mapping::Submap {
                        int high_resolution_max_range);
   void Finish();
 
+  void ToPGM(std::ofstream& file_out) const override;
+
  private:
   HybridGrid high_resolution_hybrid_grid_;
   HybridGrid low_resolution_hybrid_grid_;

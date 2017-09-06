@@ -49,6 +49,8 @@ class Submap : public mapping::Submap {
 
   void ToProto(mapping::proto::Submap* proto) const override;
 
+  void ToPGM(std::ofstream& file_out) const override;
+
   const ProbabilityGrid& probability_grid() const { return probability_grid_; }
   bool finished() const { return finished_; }
 

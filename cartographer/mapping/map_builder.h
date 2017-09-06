@@ -88,6 +88,8 @@ class MapBuilder {
 
   mapping::SparsePoseGraph* sparse_pose_graph();
 
+  void ConvertSubmapsToPGM(const std::string& dir_path);
+
  private:
   const proto::MapBuilderOptions options_;
   common::ThreadPool thread_pool_;

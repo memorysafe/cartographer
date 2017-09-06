@@ -184,14 +184,13 @@ namespace cartographer {
               return result;
             }
 
-            void toPGM(std::ofstream& file_out) const{
+            void ToPGM(std::ofstream& file_out) const{
                 auto width = limits_.cell_limits().num_x_cells;
                 auto height = limits_.cell_limits().num_y_cells;
                 // head
                 file_out << "P2" << std::endl;
                 file_out << width << " " << height << std::endl;
                 file_out << 32767 << std::endl;
-                // TODO (Ernest) to complete the format (maxVal here), 255 is NOT the maxVal
 
                 // Restriction of P2 PGM: each line contains no more than 70 character;
                 int count = 0;

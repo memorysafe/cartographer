@@ -64,6 +64,8 @@ class Submap {
 
   virtual void ToProto(proto::Submap* proto) const = 0;
 
+  virtual void ToPGM(std::ofstream& file_out) const = 0;
+
   // Local SLAM pose of this submap.
   transform::Rigid3d local_pose() const { return local_pose_; }
 

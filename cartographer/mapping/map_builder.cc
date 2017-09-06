@@ -22,6 +22,7 @@
 #include <unordered_set>
 #include <utility>
 #include <fstream>
+#include <string>
 
 #include "cartographer/common/make_unique.h"
 #include "cartographer/mapping/collated_trajectory_builder.h"
@@ -249,6 +250,22 @@ namespace cartographer {
         }
 
         SparsePoseGraph* MapBuilder::sparse_pose_graph() { return sparse_pose_graph_; }
+
+        void MapBuilder::ConvertSubmapsToPGM(const std::string& dir_path){
+            const auto submap_data = sparse_pose_graph_->GetAllSubmapData();
+            for (int trajectory_id = 0;
+                 trajectory_id < static_cast<int>(submap_data.size());
+                 trajectory_id++){
+                for (int submap_id = 0;
+                     submap_id < static_cast<int>(submap_data[trajectory_id].size());
+                     submap_id ++){
+                    std::string file_name = dir_path + "submap-" + std::to_string(trajectory_id) +
+                            "-" + std::to_string(submap_id) + ".pgm";
+                    std::ofstream out(file_name);
+                    submap_data[trajectory_id][submap_id].submap->ToPGM(out);
+                }
+            }
+        }
 
     }  // namespace mapping
 }  // namespace cartographer
