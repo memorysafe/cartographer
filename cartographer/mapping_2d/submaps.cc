@@ -82,6 +82,10 @@ void Submap::ToProto(mapping::proto::Submap* const proto) const {
   *submap_2d->mutable_probability_grid() = probability_grid_.ToProto();
 }
 
+void Submap::ToPGM(std::ofstream& file_out) const{
+  probability_grid_.ToPGM(file_out);
+}
+
 void Submap::ToResponseProto(
     const transform::Rigid3d&,
     mapping::proto::SubmapQuery::Response* const response) const {
